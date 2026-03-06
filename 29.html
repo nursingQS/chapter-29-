@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nonmalignant Hematologic Disorders – Chapter 29 Exam</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(145deg, #8b3a3a, #b36666);
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+        }
+        
+        .container {
+            width: 100vw;
+            height: 100vh;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            background: linear-gradient(145deg, #a34c4c, #c27e7e);
+            color: white;
+            padding: 20px 30px;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 85px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            border-bottom: 4px solid #6d2e2e;
+        }
+        
+        .header-content {
+            flex: 1;
+        }
+        
+        .header h1 {
+            font-size: 1.6rem;
+            margin: 0;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+        
+        .counter {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            min-width: 100px;
+            text-align: center;
+            white-space: nowrap;
+            margin-left: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(5px);
+        }
+        
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: #f0d7d7;
+            flex-shrink: 0;
+            position: relative;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #c27e7e, #8b3a3a);
+            height: 100%;
+            width: 0%;
+            transition: width 0.4s ease;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 30px;
+            background: #f5e6e6;
+        }
+        
+        .question-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 0;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            border: 3px solid #e6b3b3;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        
+        .question-header {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+        
+        .question-number {
+            background: linear-gradient(145deg, #b36666, #8b3a3a);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 6px 20px rgba(139,58,58,0.4);
+        }
+        
+        .question-text {
+            font-size: 1.4rem;
+            line-height: 1.7;
+            color: #5e2e2e;
+            flex-grow: 1;
+            font-weight: 600;
+            padding-right: 15px;
+        }
+        
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .option {
+            padding: 20px;
+            border: 3px solid #e6b3b3;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 1.15rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .option:hover {
+            background: #fadfdf;
+            border-color: #b36666;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(179,102,102,0.15);
+        }
+        
+        .option-letter {
+            background: linear-gradient(145deg, #b36666, #8b3a3a);
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            border: 3px solid #8b3a3a;
+        }
+        
+        .option.correct {
+            background: linear-gradient(145deg, #66bb6a, #43a047);
+            border-color: #43a047;
+            color: white;
+        }
+        
+        .option.correct .option-letter {
+            background: #43a047;
+            color: white;
+            border-color: #388e3c;
+        }
+        
+        .option.incorrect {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            border-color: #e53935;
+            color: white;
+        }
+        
+        .option.incorrect .option-letter {
+            background: #e53935;
+            color: white;
+            border-color: #d32f2f;
+        }
+        
+        .feedback-area {
+            flex-shrink: 0;
+        }
+        
+        .feedback {
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+            align-items: center;
+            gap: 20px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            animation: slideIn 0.3s ease;
+            margin-bottom: 20px;
+        }
+        
+        .feedback.correct {
+            background: linear-gradient(145deg, #c8e6c9, #a5d6a7);
+            border: 3px solid #43a047;
+            color: #1b5e20;
+            display: flex;
+        }
+        
+        .feedback.incorrect {
+            background: linear-gradient(145deg, #ffcdd2, #ef9a9a);
+            border: 3px solid #e53935;
+            color: #b71c1c;
+            display: flex;
+        }
+        
+        .feedback-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+        
+        .rationale {
+            background: linear-gradient(145deg, #f8e6e6, #f2d9d9);
+            border: 3px solid #b36666;
+            border-radius: 15px;
+            padding: 25px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+        
+        .rationale.show {
+            display: block;
+        }
+        
+        .rationale h4 {
+            color: #8b3a3a;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .rationale p {
+            color: #632b2b;
+            line-height: 1.7;
+            font-size: 1.1rem;
+        }
+        
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 30px;
+            background: #e6b3b3;
+            border-top: 3px solid #d99494;
+            flex-shrink: 0;
+            height: 80px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(145deg, #b36666, #8b3a3a);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139,58,58,0.4);
+            background: linear-gradient(145deg, #8b3a3a, #632b2b);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(145deg, #90a4ae, #607d8b);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(96,125,139,0.4);
+            background: linear-gradient(145deg, #607d8b, #455a64);
+        }
+        
+        .btn-cancel {
+            background: linear-gradient(145deg, #ef5350, #e53935);
+            color: white;
+            display: none;
+        }
+        
+        .btn-cancel:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(229,57,53,0.4);
+            background: linear-gradient(145deg, #e53935, #c62828);
+        }
+        
+        .btn-cancel.show {
+            display: flex;
+        }
+        
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                height: 75px;
+                padding: 15px 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+                font-size: 1.05rem;
+                gap: 15px;
+            }
+            
+            .option-letter {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .navigation {
+                padding: 15px 20px;
+                height: 70px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .nav-buttons {
+                gap: 10px;
+            }
+        }
+        
+        @media (max-height: 700px) {
+            .header {
+                height: 70px;
+                padding: 15px 20px;
+            }
+            
+            .question-area {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 1.2rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="header-content">
+            <h1>🩸 Nonmalignant Hematologic Disorders (Chapter 29)</h1>
+            <div class="subtitle">35 NCLEX-style questions with rationales</div>
+        </div>
+        <div class="counter" id="counter">1/35</div>
+    </div>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="main-content">
+        <div class="question-area">
+            <div class="question-header">
+                <div class="question-number" id="questionNumber">1</div>
+                <div class="question-text" id="question"></div>
+            </div>
+            
+            <div class="options-container" id="options"></div>
+        </div>
+        
+        <div class="feedback-area">
+            <div class="feedback" id="feedback">
+                <div class="feedback-icon" id="feedbackIcon"></div>
+                <div id="feedbackText"></div>
+            </div>
+            <div class="rationale" id="rationale">
+                <h4>📘 RATIONALE:</h4>
+                <p id="rationaleText"></p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="navigation">
+        <button class="btn btn-secondary" id="prevBtn" onclick="previousCard()">
+            ⬅️ Previous
+        </button>
+        <div class="nav-buttons">
+            <button class="btn btn-cancel" id="cancelBtn" onclick="cancelSelection()">
+                ❌ Cancel
+            </button>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextCard()">
+                Next ➡️
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Chapter 29: Management of Patients with Nonmalignant Hematologic Disorders – 35 questions (exact from document)
+    const questions = [
+        {
+            id: 1,
+            question: "1. A client with sickle cell disease is taking narcotic analgesics for pain control. Which intervention by the nurse would decrease the risk for narcotic substance abuse?",
+            options: [
+                "A. Encourage the client to rely on complementary and alternative therapies.",
+                "B. Encourage the client to seek care from a single provider for pain relief.",
+                "C. Teach the client to accept chronic pain as an inevitable aspect of the disease.",
+                "D. Limit the reporting of emergency department visits to the primary health care provider."
+            ],
+            correct: 1, // B
+            rationale: "The client should be encouraged to use a single primary provider to address health care concerns. Emergency department visits should be reported to the primary provider to achieve optimal management of the disease. It would be inappropriate to teach the client to simply accept the pain. Complementary therapies are usually insufficient to fully address pain in sickle cell disease. (PTS:1 REF:p.925)"
+        },
+        {
+            id: 2,
+            question: "2. A client newly diagnosed with thrombocytopenia is admitted to the medical unit. After the admission assessment, the client asks the nurse to explain the condition. The nurse explains to this client that this condition occurs due to which factor?",
+            options: [
+                "A. An attack on the platelets by antibodies",
+                "B. Decreased production of platelets",
+                "C. Impaired communication between platelets",
+                "D. An autoimmune process causing platelet malfunction"
+            ],
+            correct: 1, // B
+            rationale: "Thrombocytopenia can result from a decreased platelet production, increased platelet destruction, or increased consumption of platelets. Impaired platelet communication, antibodies, and autoimmune processes are not typical pathologies. (PTS:1 REF:p.932)"
+        },
+        {
+            id: 3,
+            question: "3. A critical care nurse is caring for a client with immune hemolytic anemia. The client is not responding to conservative treatments, and the client's condition is now becoming life-threatening. The nurse is aware that a treatment option in this case may include which intervention?",
+            options: [
+                "A. Hepatectomy",
+                "B. Vitamin K administration",
+                "C. Platelet transfusion",
+                "D. Splenectomy"
+            ],
+            correct: 3, // D
+            rationale: "A splenectomy may be the course of treatment if autoimmune hemolytic anemia does not respond to conservative treatment. Vitamin K administration is treatment for vitamin K deficiency and does not resolve anemia. Platelet transfusion may be the course of treatment for some bleeding disorders. Hepatectomy would not help the client. (PTS:1 REF:p.927)"
+        },
+        {
+            id: 4,
+            question: "4. A nurse is providing education to a client with iron deficiency anemia who has been prescribed iron supplements. What should the nurse include in health education?",
+            options: [
+                "A. Take the iron with dairy products to enhance absorption.",
+                "B. Increase the intake of vitamin E to enhance absorption.",
+                "C. Iron will cause the stools to darken in color.",
+                "D. Limit foods high in fiber due to the risk for diarrhea."
+            ],
+            correct: 2, // C
+            rationale: "The nurse will inform the client that iron will cause the stools to become dark in color. Iron should be taken on an empty stomach, as its absorption is affected by food, especially dairy products. Clients should be instructed to increase their intake of vitamin C to enhance iron absorption. Foods high in fiber should be consumed to minimize problems with constipation, a common side effect associated with iron therapy. (PTS:1 REF:p.915)"
+        },
+        {
+            id: 5,
+            question: "5. The nurse is assessing a new client with reports of acute fatigue and a sore tongue that is visibly smooth and beefy red. This client is demonstrating signs and symptoms associated with what form of hematologic disorder?",
+            options: [
+                "A. Sickle cell disease",
+                "B. Hemophilia",
+                "C. Megaloblastic anemia",
+                "D. Thrombocytopenia"
+            ],
+            correct: 2, // C
+            rationale: "A red, smooth, sore tongue is a symptom associated with megaloblastic anemia. Sickle cell disease, hemophilia, and thrombocytopenia do not have symptoms involving the tongue. (PTS:1 REF:p.912)"
+        },
+        {
+            id: 6,
+            question: "6. A client with acute kidney injury has decreased erythropoietin production. Upon analysis of the client's complete blood count, the nurse will expect which of the following results?",
+            options: [
+                "A. An increased hemoglobin and decreased hematocrit",
+                "B. A decreased hemoglobin and hematocrit",
+                "C. A decreased mean corpuscular volume (MCV) and red cell distribution width (RDW)",
+                "D. An increased mean corpuscular volume (MCV) and red cell distribution width (RDW)"
+            ],
+            correct: 1, // B
+            rationale: "The decreased production of erythropoietin will result in a decreased hemoglobin and hematocrit. The client will have normal MCV and RDW because the erythrocytes are normal in appearance. (PTS:1 REF:p.915)"
+        },
+        {
+            id: 7,
+            question: "7. A client comes to the clinic reporting fatigue and the health interview is suggestive of pica. Laboratory findings reveal a low serum iron level and a low ferritin level. With what would the nurse suspect that the client will be diagnosed?",
+            options: [
+                "A. Iron deficiency anemia",
+                "B. Pernicious anemia",
+                "C. Sickle cell disease",
+                "D. Hemolytic anemia"
+            ],
+            correct: 0, // A
+            rationale: "A low serum iron level, a low ferritin level, and symptoms of pica are associated with iron deficiency anemia. TIBC may also be elevated. None of the other anemias are associated with pica. (PTS:1 REF:p.914)"
+        },
+        {
+            id: 8,
+            question: "8. A client comes into the clinic reporting fatigue. Blood work shows an increased bilirubin concentration and an increased reticulocyte count. Which condition should the nurse most suspect the client has?",
+            options: [
+                "A. A hypoproliferative anemia",
+                "B. A leukemia",
+                "C. Thrombocytopenia",
+                "D. A hemolytic anemia"
+            ],
+            correct: 3, // D
+            rationale: "In hemolytic anemias, premature destruction of erythrocytes results in the liberation of hemoglobin from the erythrocytes into the plasma; the released hemoglobin is converted in large part to bilirubin, and therefore the bilirubin concentration rises. The increased erythrocyte destruction leads to tissue hypoxia, which in turn stimulates erythropoietin production. This increased production is reflected in an increased reticulocyte count as the bone marrow responds to the loss of erythrocytes. Hypoproliferative anemias, leukemia, and thrombocytopenia lack this pathology and presentation. (PTS:1 REF:p.911)"
+        },
+        {
+            id: 9,
+            question: "9. A client is admitted to the hospital with pernicious anemia. The nurse should prepare to administer which of the following medications?",
+            options: [
+                "A. Folic acid",
+                "B. Vitamin B12",
+                "C. Lactulose",
+                "D. Magnesium sulfate"
+            ],
+            correct: 1, // B
+            rationale: "Pernicious anemia is characterized by vitamin B12 deficiency. Magnesium sulfate, lactulose, and folic acid do not address the pathology of this type of anemia. (PTS:1 REF:p.918)"
+        },
+        {
+            id: 10,
+            question: "10. A client's blood work reveals a platelet level of 17,000/mm3. When inspecting the client's integumentary system, what finding would be most consistent with this platelet level?",
+            options: [
+                "A. Dermatitis",
+                "B. Petechiae",
+                "C. Urticaria",
+                "D. Alopecia"
+            ],
+            correct: 1, // B
+            rationale: "When the platelet count drops to less than 20,000/mm3, petechiae can appear. Low platelet levels do not normally result in dermatitis, urticaria (hives), or alopecia (hair loss). (PTS:1 REF:p.931)"
+        },
+        {
+            id: 11,
+            question: "11. A nurse is admitting a client with immune thrombocytopenic purpura to the unit. In completing the admission assessment, the nurse must be alert for what medications that potentially alter platelet function? Select all that apply.",
+            options: [
+                "A. Antihypertensives",
+                "B. Penicillins",
+                "C. Sulfa-containing medications",
+                "D. Aspirin-based drugs",
+                "E. NSAIDs"
+            ],
+            correct: [2,3,4], // C, D, E
+            rationale: "The nurse must be alert for sulfa-containing medications and others that alter platelet function (e.g., aspirin-based or other NSAIDs). Antihypertensive drugs and the penicillins do not alter platelet function. (PTS:1 REF:p.934)"
+        },
+        {
+            id: 12,
+            question: "12. A 25-year-old client comes to the emergency department with excessive bleeding from a cut sustained when cleaning a knife. Blood work shows a prolonged prothrombin time (PT), but a vitamin K deficiency is ruled out. When assessing the client, areas of ecchymosis are noted on other areas of the body. Which of the following is the most plausible cause of the client's signs and symptoms?",
+            options: [
+                "A. Lymphoma",
+                "B. Leukemia",
+                "C. Hemophilia",
+                "D. Hepatic dysfunction"
+            ],
+            correct: 3, // D
+            rationale: "Prolongation of the PT, unless it is caused by vitamin K deficiency, may indicate severe hepatic dysfunction. Liver dysfunction can lead to decreased amount of factors needed for coagulation and hemostasis. The majority of hemophiliacs are diagnosed as children. The scenario does not describe signs or symptoms of lymphoma or leukemia. (PTS:1 REF:p.939)"
+        },
+        {
+            id: 13,
+            question: "13. A client with a history of cirrhosis is admitted to the ICU with a diagnosis of bleeding esophageal varices; an attempt to stop the bleeding has been only partially successful. What would the critical care nurse expect the care team to prescribe for this client?",
+            options: [
+                "A. Packed red blood cells (PRBCs)",
+                "B. Vitamin K",
+                "C. Oral anticoagulants",
+                "D. Heparin infusion"
+            ],
+            correct: 0, // A
+            rationale: "Clients with liver dysfunction may have life-threatening hemorrhage from peptic ulcers or esophageal varices. In these cases, replacement with fresh-frozen plasma, PRBCs, and platelets is usually required. Vitamin K may be prescribed once the bleeding is stopped, but that is not what is needed to stop the bleeding of the varices. Anticoagulants would exacerbate the client's bleeding. (PTS:1 REF:p.939)"
+        },
+        {
+            id: 14,
+            question: "14. The nurse on the pediatric unit is caring for a 10-year-old child with a diagnosis of hemophilia. The nurse should assess carefully for indication of what nursing diagnosis?",
+            options: [
+                "A. Hypothermia",
+                "B. Diarrhea",
+                "C. Ineffective coping",
+                "D. Imbalanced nutrition: Less than body requirements"
+            ],
+            correct: 2, // C
+            rationale: "Most clients with hemophilia are diagnosed as children. They often require assistance in coping with the condition because it is chronic, places restrictions on their lives, and is an inherited disorder that can be passed to future generations. Children with hemophilia are not at risk of hypothermia, diarrhea, or imbalanced nutrition. (PTS:1 REF:p.937)"
+        },
+        {
+            id: 15,
+            question: "15. A group of nurses are learning about the high incidence and prevalence of anemia among different populations. Which individual is most likely to have anemia?",
+            options: [
+                "A. A 50-year-old black woman who is going through menopause",
+                "B. An 81-year-old woman who has chronic heart failure",
+                "C. A 48-year-old man who travels extensively and has a high-stress job",
+                "D. A 13-year-old girl who has just experienced menarche"
+            ],
+            correct: 1, // B
+            rationale: "The incidence and prevalence of anemia are exceptionally high among older adults, and the risk of anemia is compounded by the presence of heart disease. None of the other listed individuals exhibits high-risk factors for anemia, though exceptionally heavy menstrual flow can result in anemia. (PTS:1 REF:p.911)"
+        },
+        {
+            id: 16,
+            question: "16. An adult client has been diagnosed with iron-deficiency anemia. What nursing diagnosis is most likely to apply to this client's health status?",
+            options: [
+                "A. Risk for deficient fluid volume related to impaired erythropoiesis",
+                "B. Risk for infection related to tissue hypoxia",
+                "C. Acute pain related to uncontrolled hemolysis",
+                "D. Fatigue related to decreased oxygen-carrying capacity"
+            ],
+            correct: 3, // D
+            rationale: "Fatigue is the major assessment finding common to all forms of anemia. Anemia does not normally result in acute pain or fluid deficit. The client may have an increased risk of infection due to impaired immune function, but fatigue is more likely. (PTS:1 REF:p.912)"
+        },
+        {
+            id: 17,
+            question: "17. A client has been living with a diagnosis of anemia for several years and has experienced recent declines in hemoglobin levels despite active treatment. Which assessment finding would signal complications of anemia?",
+            options: [
+                "A. Venous ulcers and visual disturbances",
+                "B. Fever and signs of hyperkalemia",
+                "C. Epistaxis and gastroesophageal reflux",
+                "D. Shortness of breath and peripheral edema"
+            ],
+            correct: 3, // D
+            rationale: "A significant complication of anemia is heart failure from chronic diminished blood volume and the heart's compensatory effort to increase cardiac output. Clients with anemia should be assessed for signs and symptoms of heart failure, including dyspnea and peripheral edema. None of the other listed signs and symptoms is characteristic of heart failure. (PTS:1 REF:p.912)"
+        },
+        {
+            id: 18,
+            question: "18. A woman who is in her third trimester of pregnancy has been experiencing an exacerbation of iron-deficiency anemia in recent weeks. When providing the client with nutritional guidelines and meal suggestions, what foods would be most likely to increase the woman's iron stores?",
+            options: [
+                "A. Salmon accompanied by whole milk",
+                "B. Mixed vegetables and brown rice",
+                "C. Beef liver accompanied by orange juice",
+                "D. Yogurt, almonds, and whole grain oats"
+            ],
+            correct: 2, // C
+            rationale: "Food sources high in iron include organ meats, other meats, beans (e.g., black and pinto), leafy green vegetables, raisins, and molasses. Taking iron-rich foods with a source of vitamin C (e.g., orange juice) enhances the absorption of iron. All of the listed foods are nutritious, but liver and orange juice are most likely to be of benefit to iron stores. (PTS:1 REF:p.914)"
+        },
+        {
+            id: 19,
+            question: "19. A nurse is planning the care of a client with a diagnosis of sickle cell disease who has been admitted for the treatment of an acute vaso-occlusive crisis. Which nursing diagnosis should the nurse prioritize in the client's plan of care?",
+            options: [
+                "A. Risk for disuse syndrome related to ineffective peripheral circulation",
+                "B. Functional urinary incontinence related to urethral occlusion",
+                "C. Ineffective tissue perfusion related to thrombosis",
+                "D. Ineffective thermoregulation related to hypothalamic dysfunction"
+            ],
+            correct: 2, // C
+            rationale: "There are multiple potential complications of sickle cell disease and sickle cell crises. Central among these, however, is the risk of thrombosis and consequent lack of tissue perfusion. Sickle cell crises are not normally accompanied by impaired thermoregulation or genitourinary complications. Risk for disuse syndrome is not associated with the effects of acute vaso-occlusive crisis. (PTS:1 REF:p.920)"
+        },
+        {
+            id: 20,
+            question: "20. A client is being treated on the medical unit for a sickle cell crisis. The nurse's most recent assessment reveals a fever and a new onset of fine crackles on lung auscultation. Which action by the nurse would be the most appropriate?",
+            options: [
+                "A. Apply supplementary oxygen by nasal cannula.",
+                "B. Administer bronchodilators by nebulizer.",
+                "C. Liaise with the respiratory therapist and consider high-flow oxygen.",
+                "D. Inform the health care provider that the client may have an infection."
+            ],
+            correct: 3, // D
+            rationale: "Clients with sickle cell disease are highly susceptible to infection, thus any early signs of infection should be reported promptly. There is no evidence of respiratory distress, so oxygen therapy and bronchodilators are not indicated. (PTS:1 REF:p.924)"
+        },
+        {
+            id: 21,
+            question: "21. When teaching a client with sickle cell disease about strategies to prevent crises, what measures should the nurse recommend?",
+            options: [
+                "A. Using prophylactic antibiotics and performing meticulous hygiene",
+                "B. Maximizing physical activity and taking OTC iron supplements",
+                "C. Limiting psychosocial stress and eating a high-protein diet",
+                "D. Avoiding cold temperatures and ensuring sufficient hydration"
+            ],
+            correct: 3, // D
+            rationale: "Keeping warm and providing adequate hydration can be effective in diminishing the occurrence and severity of attacks. Hygiene, antibiotics, and high protein intake do not prevent crises. Maximizing activity may exacerbate pain and be unrealistic. (PTS:1 REF:p.924)"
+        },
+        {
+            id: 22,
+            question: "22. A client with a documented history of glucose-6-phosphate dehydrogenase deficiency has presented to the emergency department with signs and symptoms including pallor, jaundice, and malaise. Which of the nurse's assessment questions relates most directly to this client's hematologic disorder?",
+            options: [
+                "A. 'When did you last have a blood transfusion?'",
+                "B. 'What medications have you taken recently?'",
+                "C. 'Have you been under significant stress lately?'",
+                "D. 'Have you suffered any recent injuries?'"
+            ],
+            correct: 1, // B
+            rationale: "Exacerbations of glucose-6-phosphate dehydrogenase deficiency are nearly always precipitated by medications. Blood transfusions, stress, and injury are less common triggers. (PTS:1 REF:p.926)"
+        },
+        {
+            id: 23,
+            question: "23. A client's electronic health record notes that the client has previously undergone treatment for secondary polycythemia. The nurse should assess for which factor?",
+            options: [
+                "A. Recent blood donation",
+                "B. Evidence of lung disease",
+                "C. A history of venous thromboembolism",
+                "D. Impaired renal function"
+            ],
+            correct: 1, // B
+            rationale: "Any reduction in oxygenation, such as lung disease, can cause secondary polycythemia. Blood donation does not precipitate this problem and impaired renal function typically causes anemia, not polycythemia. A history of venous thromboembolism is not a likely contributor. (PTS:1 REF:p.929)"
+        },
+        {
+            id: 24,
+            question: "24. A client's absolute neutrophil count (ANC) is 440/mm3 but the nurse's assessment reveals no apparent signs or symptoms of infection. What action should the nurse prioritize when providing care for this client?",
+            options: [
+                "A. Meticulous hand hygiene",
+                "B. Timely administration of antibiotics",
+                "C. Provision of a nutrient-dense diet",
+                "D. Maintaining a sterile care environment"
+            ],
+            correct: 0, // A
+            rationale: "Providing care for a client with neutropenia requires that the nurse adhere closely to standard precautions and infection control procedures. Hand hygiene is central to such efforts. Prophylactic antibiotics are rarely used and it is not possible to provide a sterile environment for care. Nutrition is highly beneficial, but hand hygiene is the central aspect of care. (PTS:1 REF:p.930)"
+        },
+        {
+            id: 25,
+            question: "25. A nurse is providing discharge education to a client who has recently been diagnosed with a bleeding disorder. Which topic should the nurse prioritize when teaching this client?",
+            options: [
+                "A. Avoiding buses, subways, and other crowded, public sites",
+                "B. Avoiding activities that carry a risk for injury",
+                "C. Keeping immunizations current",
+                "D. Avoiding foods high in vitamin K"
+            ],
+            correct: 1, // B
+            rationale: "Clients with bleeding disorders need to understand the importance of avoiding activities that increase the risk of bleeding, such as contact sports. Immunizations involve injections and may be contraindicated for some clients. Clients with bleeding disorders do not need to normally avoid crowds. Foods high in vitamin K may be beneficial, not detrimental. (PTS:1 REF:p.931)"
+        },
+        {
+            id: 26,
+            question: "26. A nurse in a long-term care facility is admitting a new resident who has a bleeding disorder. When planning this resident's care, the nurse should include which action?",
+            options: [
+                "A. Housing the resident in a private room",
+                "B. Implementing a passive ROM program",
+                "C. Implementing of a plan for fall prevention",
+                "D. Providing the client with a high-fiber diet"
+            ],
+            correct: 2, // C
+            rationale: "To prevent bleeding episodes, the nurse should ensure that an older adult with a bleeding disorder does not suffer a fall. Activity limitation is not necessarily required, however. A private room is not necessary and there is no reason to increase fiber intake. (PTS:1 REF:p.931)"
+        },
+        {
+            id: 27,
+            question: "27. The results of a client's most recent blood work and physical assessment are suggestive of immune thrombocytopenic purpura (ITP). This client should undergo testing for which of the following potential causes? Select all that apply.",
+            options: [
+                "A. Hepatitis",
+                "B. Acute kidney injury",
+                "C. HIV",
+                "D. Malignant melanoma",
+                "E. Cholecystitis"
+            ],
+            correct: [0,2], // A, C
+            rationale: "Viral illnesses have the potential to cause ITP. Acute kidney injury, malignancies, and gallbladder inflammation are not typical causes of ITP. (PTS:1 REF:p.933)"
+        },
+        {
+            id: 28,
+            question: "28. A client with a recent diagnosis of ITP has asked the nurse why the care team has not chosen to administer platelets, stating, 'I have low platelets, so why not give me a transfusion of exactly what I'm missing?' How should the nurse best respond?",
+            options: [
+                "A. 'Transfused platelets usually aren't beneficial because they're rapidly destroyed in the body.'",
+                "B. 'A platelet transfusion often further blunts your body's own production of platelets.'",
+                "C. 'Finding a matching donor for a platelet transfusion is exceedingly difficult.'",
+                "D. 'A very small percentage of the platelets in a transfusion are actually functional.'"
+            ],
+            correct: 0, // A
+            rationale: "Despite extremely low platelet counts, platelet transfusions are usually avoided. Transfusions tend to be ineffective not because the platelets are nonfunctional but because the client's antiplatelet antibodies bind with the transfused platelets, causing them to be destroyed. Matching the client's blood type is not usually necessary for a platelet transfusion. Platelet transfusions do not exacerbate low platelet production. (PTS:1 REF:p.933)"
+        },
+        {
+            id: 29,
+            question: "29. A client with several chronic health problems has been newly diagnosed with a qualitative platelet defect. What component of the client's previous medication regimen may have contributed to the development of this disorder?",
+            options: [
+                "A. Calcium carbonate",
+                "B. Vitamin B12",
+                "C. Aspirin",
+                "D. Vitamin D"
+            ],
+            correct: 2, // C
+            rationale: "Aspirin may induce a platelet disorder. Even small amounts of aspirin reduce normal platelet aggregation, and the prolonged bleeding time lasts for several days after aspirin ingestion. Calcium, vitamin D, and vitamin B12 do not have the potential to induce a platelet defect. (PTS:1 REF:p.935)"
+        },
+        {
+            id: 30,
+            question: "30. A young man with a diagnosis of hemophilia A has been brought to emergency department after suffering a workplace accident resulting in bleeding. Rapid assessment has revealed the source of the client's bleeding and established that his vital signs are stable. What should be the nurse's next action?",
+            options: [
+                "A. Position the client in a prone position to minimize bleeding.",
+                "B. Establish IV access for the administration of vitamin K.",
+                "C. Prepare for the administration of factor VIII.",
+                "D. Administer a normal saline bolus to increase circulatory volume."
+            ],
+            correct: 2, // C
+            rationale: "Injuries to clients with hemophilia necessitate prompt administration of clotting factors. Vitamin K is not a treatment modality and a prone position will not be appropriate for all types and locations of wounds. A normal saline bolus is not indicated. (PTS:1 REF:p.936)"
+        },
+        {
+            id: 31,
+            question: "31. A nurse is planning the care of a client who has a diagnosis of hemophilia A. When addressing the nursing diagnosis of Acute Pain Related to Joint Hemorrhage, what principle should guide the nurse's choice of interventions?",
+            options: [
+                "A. Gabapentin (Neurontin) is effective because of the neuropathic nature of the client's pain.",
+                "B. Opioids partially inhibit the client's synthesis of clotting factors.",
+                "C. Opioids may cause vasodilation and exacerbate bleeding.",
+                "D. NSAIDs are contraindicated due to the risk for bleeding."
+            ],
+            correct: 3, // D
+            rationale: "NSAIDs may be contraindicated in clients with hemophilia due to the associated risk of bleeding. Opioids do not have a similar effect and they do not inhibit platelet synthesis. The pain associated with hemophilia is not neuropathic. (PTS:1 REF:p.935)"
+        },
+        {
+            id: 32,
+            question: "32. A night nurse is reviewing the next day's medication administration record (MAR) of a hospital client who has hemophilia. The nurse notes that the MAR specifies both oral and subcutaneous options for the administration of a PRN antiemetic. What is the nurse's best action?",
+            options: [
+                "A. Ensure that the day nurse knows not to give the antiemetic.",
+                "B. Contact the prescriber to have the subcutaneous option discontinued.",
+                "C. Reassess the client's need for antiemetics.",
+                "D. Remove the subcutaneous route from the client's MAR."
+            ],
+            correct: 1, // B
+            rationale: "Injections must be avoided in clients with hemophilia. Consequently, the nurse should ensure that the prescriber makes the necessary change. The nurse cannot independently make a change to a client's MAR in most cases. Facilitating the necessary change is preferable to deferring to the day nurse. (PTS:1 REF:p.936)"
+        },
+        {
+            id: 33,
+            question: "33. A client with von Willebrand disease (vWD) has experienced recent changes in bowel function that suggest the need for a screening colonoscopy. What intervention should be performed in anticipation of this procedure?",
+            options: [
+                "A. The client should not undergo the normal bowel cleansing protocol prior to the procedure.",
+                "B. The client should receive a unit of fresh-frozen plasma 48 hours before the procedure.",
+                "C. The client should be admitted to the surgical unit on the day before the procedure.",
+                "D. The client should be given necessary clotting factors before the procedure."
+            ],
+            correct: 3, // D
+            rationale: "A goal of treating vWD is to replace the deficient protein (e.g., vWF or factor VIII) prior to an invasive procedure to prevent subsequent bleeding. Bowel cleansing is not contraindicated and FFP does not reduce the client's risk of bleeding. There may or may not be a need for preprocedure hospital admission. (PTS:1 REF:p.939)"
+        },
+        {
+            id: 34,
+            question: "34. A client with a history of atrial fibrillation has contacted the clinic reporting an accidental overdose on prescribed warfarin. The nurse should recognize the possible need for which antidote?",
+            options: [
+                "A. Intravenous immunoglobulins (IVIG)",
+                "B. Factor IX",
+                "C. Vitamin K",
+                "D. Factor VIII"
+            ],
+            correct: 2, // C
+            rationale: "Vitamin K is given as an antidote for warfarin toxicity. IVIG is a form of immunosuppressive therapy given to treat immune thrombocytopenic purpura and to counteract hemolytic transfusion reaction and neutralizing antibodies (inhibitors) that develop in response to factor replacement therapy in clients with hemophilia. IVIG is not used as an antidote for warfarin toxicity. Factors VIII and IX are clotting factors that are deficient in clients with hemophilia due to a genetic defect; these clients may receive recombinant forms of these factors to treat their condition. (PTS:1 REF:p.945)"
+        },
+        {
+            id: 35,
+            question: "35. An intensive care nurse is aware of the need to identify clients who may be at risk of developing disseminated intravascular coagulation (DIC). Which ICU client most likely faces the highest risk of DIC?",
+            options: [
+                "A. A client with extensive burns",
+                "B. A client who has a diagnosis of acute respiratory distress syndrome",
+                "C. A client who suffered multiple trauma in a workplace accident",
+                "D. A client who is being treated for septic shock"
+            ],
+            correct: 3, // D
+            rationale: "Sepsis is a common cause of DIC. A wide variety of acute illnesses can precipitate DIC, but sepsis is specifically identified as a cause. (PTS:1 REF:p.940)"
+        }
+    ];
+
+    let currentQuestion = 0;
+    let selectedOption = null;
+    let answers = Array(questions.length).fill(null);
+
+    function loadQuestion() {
+        const q = questions[currentQuestion];
+        if (!q) return;
+
+        const progress = ((currentQuestion + 1) / questions.length) * 100;
+        document.getElementById('progressBar').style.width = `${progress}%`;
+        document.getElementById('counter').textContent = `${currentQuestion + 1}/${questions.length}`;
+        document.getElementById('questionNumber').textContent = q.id;
+
+        document.getElementById('question').innerHTML = q.question;
+        loadOptions(q);
+
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+
+        document.getElementById('prevBtn').disabled = currentQuestion === 0;
+        const stored = answers[q.id - 1];
+        document.getElementById('nextBtn').disabled = stored === null || stored === undefined;
+        document.getElementById('nextBtn').textContent = currentQuestion >= questions.length - 1 ? 'Finish ➡️' : 'Next ➡️';
+    }
+
+    function loadOptions(q) {
+        const container = document.getElementById('options');
+        container.innerHTML = '';
+        q.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerHTML = `<div class="option-letter">${String.fromCharCode(65 + idx)}</div><div>${opt}</div>`;
+            div.onclick = () => selectOption(idx);
+            container.appendChild(div);
+        });
+
+        const saved = answers[q.id - 1];
+        if (saved !== null && saved !== undefined) {
+            selectOption(saved, true);
+        }
+    }
+
+    function selectOption(index, fromMemory = false) {
+        const q = questions[currentQuestion];
+        if (!fromMemory && selectedOption !== null) return;
+
+        if (!fromMemory) {
+            selectedOption = index;
+            answers[q.id - 1] = index;
+        }
+
+        highlightSelected(index, q);
+        showFeedback(index, q);
+        document.getElementById('nextBtn').disabled = false;
+        document.getElementById('cancelBtn').classList.add('show');
+    }
+
+    function highlightSelected(index, q) {
+        const opts = document.querySelectorAll('.option');
+        opts.forEach((opt, i) => opt.classList.remove('correct', 'incorrect'));
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        if (Array.isArray(q.correct)) {
+            correctIndices.forEach(ci => opts[ci]?.classList.add('correct'));
+            if (!correctIndices.includes(index)) {
+                opts[index]?.classList.add('incorrect');
+            }
+        } else {
+            if (index === q.correct) {
+                opts[index].classList.add('correct');
+            } else {
+                opts[index].classList.add('incorrect');
+                opts[q.correct].classList.add('correct');
+            }
+        }
+    }
+
+    function showFeedback(index, q) {
+        const fb = document.getElementById('feedback');
+        const icon = document.getElementById('feedbackIcon');
+        const text = document.getElementById('feedbackText');
+        const rationaleDiv = document.getElementById('rationale');
+        const rationaleP = document.getElementById('rationaleText');
+
+        const correctIndices = Array.isArray(q.correct) ? q.correct : [q.correct];
+        const isCorrect = correctIndices.includes(index);
+
+        if (isCorrect) {
+            fb.className = 'feedback correct';
+            icon.textContent = '✅';
+            text.textContent = 'CORRECT! Well done.';
+        } else {
+            fb.className = 'feedback incorrect';
+            icon.textContent = '❌';
+            const letters = correctIndices.map(c => String.fromCharCode(65 + c)).join(', ');
+            text.textContent = `INCORRECT. The correct answer(s): ${letters}`;
+        }
+
+        fb.style.display = 'flex';
+        rationaleP.innerHTML = q.rationale;
+        rationaleDiv.classList.add('show');
+    }
+
+    function cancelSelection() {
+        const q = questions[currentQuestion];
+        selectedOption = null;
+        answers[q.id - 1] = null;
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('correct', 'incorrect'));
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('rationale').classList.remove('show');
+        document.getElementById('cancelBtn').classList.remove('show');
+        document.getElementById('nextBtn').disabled = true;
+    }
+
+    function nextCard() {
+        if (currentQuestion < questions.length - 1) {
+            currentQuestion++;
+            selectedOption = null;
+            loadQuestion();
+        } else {
+            currentQuestion = 0;
+            loadQuestion();
+        }
+    }
+
+    function previousCard() {
+        if (currentQuestion > 0) {
+            currentQuestion--;
+            const q = questions[currentQuestion];
+            selectedOption = answers[q.id - 1];
+            loadQuestion();
+        }
+    }
+
+    // keyboard shortcuts
+    document.addEventListener('keydown', function(e) {
+        if (e.key >= '1' && e.key <= '4') selectOption(parseInt(e.key)-1);
+        else if (e.key >= 'a' && e.key <= 'd') selectOption(e.key.charCodeAt(0)-97);
+        else if (e.key >= 'A' && e.key <= 'D') selectOption(e.key.charCodeAt(0)-65);
+        else if (e.key === 'ArrowLeft' && !document.getElementById('prevBtn').disabled) previousCard();
+        else if (e.key === 'ArrowRight' && !document.getElementById('nextBtn').disabled) nextCard();
+        else if (e.key === 'Escape' && document.getElementById('cancelBtn').classList.contains('show')) cancelSelection();
+    });
+
+    loadQuestion();
+</script>
+</body>
+</html>
